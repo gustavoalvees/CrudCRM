@@ -6,7 +6,7 @@ function createWindow () {
     height: 600
   })
 
-  win.loadFile('resources//front//index.html')
+  win.loadFile('resources//front//main.html')
 }
 
 
