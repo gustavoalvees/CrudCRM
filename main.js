@@ -3,7 +3,8 @@ const { app, BrowserWindow } = require('electron')
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
-    height: 600
+    height: 600,
+    defaultEncoding: "utf8",
   })
 
   win.loadFile('resources//front//main.html')

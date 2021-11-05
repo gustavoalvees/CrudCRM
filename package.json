@@ -5,6 +5,7 @@
   "main": "main.js",
   "author": "Gustavo Alves",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "electron": "^15.3.0"
   },
   "scripts": {
