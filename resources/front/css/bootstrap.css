@@ -11264,3 +11264,10 @@ textarea.form-control-lg {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
+
+#color-full:hover{
+  filter: opacity(60%);
+}
+#color-full{
+  transition: all ease 0.5s;
+}
