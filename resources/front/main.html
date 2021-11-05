@@ -1,13 +1,28 @@
+<script>
+  // não recomendado...
+  process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'; 
+</script>
+
+<style type="text/css">
+    html, body {
+      height: 100%;
+      overflow-y: hidden; /* Hide vertical scrollbar */
+      overflow-x: hidden; /* Hide horizontal scrollbar */
+    }
+</style>
+
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
     <script src="./js/bootstrap.js"></script>
-    <script src="./js/three.min.js"></script>
     <script src="pre_load.js"></script>
 </head>
 
 
+<body class="crudCRM">
+  <div include="header.html"></div>   
+  <div include="side_bar.html"></div> 
+</body>
 
-<div>count: <span id="count"></span></div>
-<div>time: <span id="time"></span></div>
+<script>
+  includeHTML();
+</script>
