@@ -3,7 +3,7 @@ var tMenu = 0; // local temp
 
 document.body.addEventListener('click', function (event) {
     if(menu != tMenu){ 
-        console.log(menu)
+        //console.log(menu)
         if(menu >= 0 && menu < 4){// tab main
             document.getElementsByClassName("handlerClick")[tMenu].classList.remove("active");
             document.getElementsByClassName("handlerClick")[menu].classList.add("active") ;

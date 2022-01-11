@@ -28,6 +28,14 @@
 </script>
 
 
-<script src="./../back/contain.js"></script>
-<script src="./../back/menusHandler.js"></script>
 <script src="./../back/dbHandler.js"></script>
+<script src="./../back/menusHandler.js"></script>
+<script>
+  var SearchHandlerLoop = setInterval(() => {
+  var clx = document.getElementsByClassName("search-clientes")[0]
+  if (clx) {
+    require('./../back/contain.js');
+    clearInterval(SearchHandlerLoop);
+  }
+}, 1000);
+</script>

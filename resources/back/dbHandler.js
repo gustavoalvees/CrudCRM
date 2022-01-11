@@ -1,4 +1,4 @@
-const sqliteJS = require('./../back/sql.js');
+const sqliteJS = require('sql.js');
 const fs = require('fs');
 
 let db;
@@ -12,6 +12,7 @@ function tmpFolder(){
 function fileBuffer(filetmp){
   return filebuffer = fs.readFileSync(filetmp);
 }
+
 function essentialFiles(){
   if (!fs.existsSync(tmpFolder())){
     fs.mkdirSync(tmpFolder(), (err) => {
@@ -76,10 +77,12 @@ function MBstructure(filetmp){
 
 }
 
+
+
 file = tmpFolder()+"\\db.sqlite";
 essentialFiles();
 MBstructure(file)
-console.log(searchCliente("tembrolona",file))
+//console.log(searchCliente("tembrolona",file))
 //addCliente("Tembrolona Soares","tembro@hotmail.com","20202020","123123",file);
 //addCliente("Johnahth","ethgan@hotmail.com","20202020","123123",file);
 /*sqliteJS().then(function(SQL){
