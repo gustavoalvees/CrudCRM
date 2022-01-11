@@ -89,5 +89,13 @@
     "yallist": "^4.0.0",
     "yauzl": "^2.10.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavoalvees/CrudCRM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gustavoalvees/CrudCRM/issues"
+  },
+  "homepage": "https://github.com/gustavoalvees/CrudCRM#readme"
 }
