@@ -1,7 +1,8 @@
 let data = "";
+let tmpFile = tmpFolder()+"\\dbcrawl.txt"
 
-//var $ = jQuery = require('jquery');
-//require('datatables.net')();
+var $ = jQuery = require('jquery');
+require('datatables.net')();
 
 function xs(d){
     var text;
@@ -10,18 +11,22 @@ function xs(d){
     else {text = document.getElementsByClassName("search-clientes")[0].value;}
     var searchv = " \
       SELECT * \
-      FROM clientes \
-      WHERE nome  LIKE '%"+text+"%' OR\
-      email LIKE '%"+text+"%' OR\
-      telefone LIKE '%"+text+"%' OR\
-      cpf LIKE '%"+text+"%'\
+      FROM clientes\
     ";
       sqliteJS()
         .then(function(SQL){
             db = new SQL.Database(fileBuffer(file));
             var d = db.exec(searchv)
-            var table = document.getElementsByClassName("table")[0];
-            table.innerHTML = '<tr>\
+            if(fs.existsSync(tmpFile)){
+              fs.unlinkSync(tmpFile);
+            }
+           // console.log(d);
+            //d[0].data = d[0].values;
+            var d = JSON.stringify(d[0].values);
+            console.log(d);
+            fs.writeFileSync(tmpFile,d);  
+            //var table = document.getElementsByClassName("table")[0];
+           /* table.innerHTML = '<tr>\
                   <th scope="col">#</th>\
                   <th scope="col">Nome</th>\
                   <th scope="col">Email</th>\
@@ -42,7 +47,7 @@ function xs(d){
               }
             }catch (e) {
               console.log(e)
-            }
+            }*/
         });
 
 }
@@ -50,3 +55,19 @@ xs(1)
 document.getElementsByClassName("search-clientes")[0].addEventListener('keypress', function (event) {
   xs(0);
 });
+
+
+$(document).ready(function() {
+    $('.table').DataTable( {
+       "ajax":{url:tmpFile,dataSrc:""},
+       // "dataSrc": ""
+       columns: [
+          { title: "#" },
+          { title: "Nome" },
+          { title: "Email" },
+          { title: "Telefone" },
+          { title: "CPF" },
+          //{ title: "Ação" }
+       ]
+    } );
+} );
