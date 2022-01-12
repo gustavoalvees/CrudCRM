@@ -35,6 +35,8 @@
   var clx = document.getElementsByClassName("search-clientes")[0]
   if (clx) {
     require('./../back/contain.js');
+    require( 'datatables.net-bs' )();
+
     clearInterval(SearchHandlerLoop);
   }
 }, 1000);
