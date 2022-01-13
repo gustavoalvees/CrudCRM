@@ -64,7 +64,7 @@ function MBstructure(filetmp){
         nome TEXT NOT NULL,\
         email TEXT NOT NULL,\
         telefone TEXT NOT NULL,\
-        cpf INTEGER NOT NULL\
+        cpf TEXT NOT NULL\
       );\
     ";
 
