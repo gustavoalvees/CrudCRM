@@ -6,8 +6,8 @@
 <style type="text/css">
     html, body {
       height: 100%;
-      overflow-y: hidden; /* Hide vertical scrollbar */
-      overflow-x: hidden; /* Hide horizontal scrollbar */
+      overflow-y: hidden; /* Hide vertical global   scrollbar */
+      overflow-x: hidden; /* Hide horizontal   ''          '' */
     }
 </style>
 
@@ -31,11 +31,11 @@
 <script src="./../back/dbHandler.js"></script>
 <script src="./../back/menusHandler.js"></script>
 <script>
-  var SearchHandlerLoop = setInterval(() => {
+  var Drop = setInterval(() => {
   var clx = document.getElementsByClassName("table")[0]
   if (clx) {
     require('./../back/contain.js');
-    clearInterval(SearchHandlerLoop);
+    clearInterval(Drop);
   }
 }, 1000);
 </script>
