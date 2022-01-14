@@ -1,23 +1,8 @@
-let data = "";
 let tmpFile = tmpFolder()+"\\dbcrawl.txt"
 
 var $ = jQuery = require('jquery');
 require('datatables.net')();
 
-function deleteuser(id){
-  sqliteJS()
-        .then(function(SQL){
-            db = new SQL.Database(fileBuffer(file));
-            db.run(`DELETE FROM clientes WHERE id=?`, id, function(err) {
-              if (err) {
-                return console.error(err.message);
-              }
-              console.log(`Row(s) deleted ${this.changes}`);
-            });
-            console.log(d)
-        });
-
-}
 
 function xs(){
     var searchv = " \
@@ -32,7 +17,7 @@ function xs(){
               fs.unlinkSync(tmpFile);
             }
             for (var i =0; i<d[0].values.length; i++){
-              d[0].values[i][5] = "<button class='btn btn-danger' onclick='alert("+i+")'><i class='fas fa-user-minus'></i></button> <button class='btn btn-warning'><i class='fas fa-edit'></i></button>"
+              d[0].values[i][5] = "<button class='btn btn-danger' onclick='selected="+i+"'><i class='fas fa-user-minus'></i></button> <button class='btn btn-warning'><i class='fas fa-edit'></i></button>"
             }
             var d = JSON.stringify(d[0].values);
             fs.writeFileSync(tmpFile,d);  

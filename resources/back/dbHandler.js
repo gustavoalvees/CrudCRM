@@ -40,23 +40,6 @@ function addCliente(name,email,telefone,cpf,filetmp){
       });
 }
 
-function searchCliente(text,filetmp){ //CharIndex('Street',Student_Address) > 0
-    var searchv = " \
-      SELECT * \
-      FROM clientes \
-      WHERE nome  LIKE '%"+text+"%' OR\
-      email LIKE '%"+text+"%' OR\
-      telefone LIKE '%"+text+"%' OR\
-      cpf LIKE '%"+text+"%'\
-    ";
-      sqliteJS()
-        .then(function(SQL){
-            db = new SQL.Database(fileBuffer(filetmp));
-            var d = db.exec(searchv)
-            return d[0].values;
-        });
-}
-
 function MBstructure(filetmp){
     var table_clientes = " \
       CREATE TABLE IF NOT EXISTS clientes (\
@@ -74,7 +57,6 @@ function MBstructure(filetmp){
           var dlgv = db.run(table_clientes);
           saveDB(filetmp)
         });
-
 }
 
 
