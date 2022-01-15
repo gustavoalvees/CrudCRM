@@ -1,5 +1,3 @@
-let tmpFile = tmpFolder()+"\\dbcrawl.txt"
-
 var $ = jQuery = require('jquery');
 require('datatables.net')();
 

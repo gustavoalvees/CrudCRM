@@ -1,8 +1,9 @@
 const sqliteJS = require('sql.js');
 const fs = require('fs');
-
+let $ = jQuery = require('jquery');
 let db;
 let file;
+let tmpFile;
 
 
 function tmpFolder(){
@@ -25,10 +26,10 @@ function essentialFiles(){
   }
 }
 
-function saveDB(tmpfile){
+function saveDB(filetmp){
   const data = db.export();
   const buffer = new Buffer(data);
-  fs.writeFileSync(tmpfile, buffer);
+  fs.writeFileSync(filetmp, buffer);
 }
 
 function addCliente(name,email,telefone,cpf,filetmp){
@@ -40,6 +41,7 @@ function addCliente(name,email,telefone,cpf,filetmp){
       });
 }
 
+
 function MBstructure(filetmp){
     var table_clientes = " \
       CREATE TABLE IF NOT EXISTS clientes (\
@@ -47,7 +49,7 @@ function MBstructure(filetmp){
         nome TEXT NOT NULL,\
         email TEXT NOT NULL,\
         telefone TEXT NOT NULL,\
-        cpf TEXT NOT NULL\
+        cpf INTEGER NOT NULL\
       );\
     ";
 
@@ -57,11 +59,14 @@ function MBstructure(filetmp){
           var dlgv = db.run(table_clientes);
           saveDB(filetmp)
         });
+
 }
 
 
 
 file = tmpFolder()+"\\db.sqlite";
+tmpFile = tmpFolder()+"\\dbcrawl.txt"
+
 essentialFiles();
 MBstructure(file)
 //console.log(searchCliente("tembrolona",file))
