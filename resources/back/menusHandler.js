@@ -6,25 +6,37 @@ let tmpFile  = tmpFolder()+"\\dbcrawl.txt"
 var $ = jQuery = require('jquery');
 require('datatables.net')();
 
-
-function getuserName(id){
-    var d;
+function DeleteUser(id){
     sqliteJS().then(function(SQL){
         db = new SQL.Database(fileBuffer(file));
-        d = db.exec("SELECT * FROM CLIENTES WHERE ID = ?",[id]);
+        var c = db.exec("SELECT * FROM clientes WHERE ID = ?",[id]);
+        var sent = confirm("Certeza que quer deletar o cliente "+c[0].values[0][1]+"?")
+        if(sent){
+            d = db.exec("DELETE FROM clientes WHERE ID = ?",[id]);
+            $('.table').DataTable().rows( function ( idx, data, node ) { 
+                /*
+                    https://datatables.net/forums/discussion/43162/removing-rows-from-a-table-based-on-a-column-value
+                */
+                return data[0]===id;
+            }).remove().draw();
+
+            alert("cliente "+c[0].values[0][1]+" foi deletado com sucesso!")
+            saveDB(file)
+        }
+
+
     });
-    console.log(d)
 }
+
 document.body.addEventListener('click', function (event) {
+    //console.log(menu)
     if(document.getElementsByClassName("table")[0]){
-        if(selected != -1){
-            var datos = getuserName(selected+1)
-            console.log(datos)
+        if(selected != -1 && menu == 4){
+            DeleteUser(selected)
             selected = -1;
         }
     }
     if(menu != tMenu){ 
-        //console.log(menu)
         if(menu >= 0 && menu < 4){// tab main
             document.getElementsByClassName("handlerClick")[tMenu].classList.remove("active");
             document.getElementsByClassName("handlerClick")[menu].classList.add("active") ;
