@@ -1,7 +1,7 @@
 let menu     =  0; // global
 let selected =  -1;
 var tMenu    =  0; // local temp
-
+var $ = jQuery = require('jquery');
 require('datatables.net')();
 
 function DeleteUser(id){
