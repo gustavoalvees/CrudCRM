@@ -1,6 +1,5 @@
 const sqliteJS = require('sql.js');
 const fs = require('fs');
-let $ = jQuery = require('jquery');
 let db;
 let file;
 let tmpFile;
