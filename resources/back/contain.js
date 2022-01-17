@@ -28,6 +28,7 @@ function xs(){
 
 
 $(document).ready(function() {
+      // functio lag
       $('.table').DataTable( {
         "language":{
            "processing":     "processando...",
